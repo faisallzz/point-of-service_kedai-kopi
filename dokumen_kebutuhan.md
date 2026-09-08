@@ -23,11 +23,42 @@
 2. **Keandalan:** Sistem harus dapat digunakan selama jam operasional kedai dengan tingkat ketersediaan minimal 99% per bulan, tidak termasuk waktu pemeliharaan terjadwal.
 3. **Keakuratan:** Sistem harus menjaga keakuratan data stok bahan baku setelah transaksi.
 ## 4. Batasan Sistem
-- [Batasan 1]
-- [Batasan 2]
+- Sistem hanya digunakan untuk mengelola transaksi dan stok bahan baku pada satu kedai kopi dan tidak mencakup pengelolaan cabang lain.
+- Sistem hanya mencatat metode pembayaran yang digunakan pada transaksi dan tidak terintegrasi secara langsung dengan payment gateway atau mesin pembayaran.
+- Sistem tidak mencakup pengadaan atau pemesanan bahan baku kepada supplier secara otomatis
 ## 5. User Story & Acceptance Criteria
 ### US-01
-> Sebagai [Aktor], saya ingin [fitur], sehingga [manfaat].
-- [ ] AC-1: [kriteria]
-- [ ] AC-2: [kriteria]
-- [ ] AC-3: [kriteria]
+> Sebagai [kasir], saya ingin mencatat transaksi pesanan pelanggan, sehingga transaksi penjualan dapat tercatat secara digital dan total pembayaran dapat dihitung oleh sistem.
+- [ ] AC-1: [Kasir dapat memilih menu dan jumlah pesanan.]
+- [ ] AC-2: [Sistem menghitung total harga berdasarkan menu dan jumlah yang dipilih.]
+- [ ] AC-3: [Setelah transaksi disimpan, data transaksi tercatat dalam sistem.]
+### US-02
+> Sebagai [admin], saya ingin mengelola data bahan baku dan komposisi bahan setiap menu, sehingga sistem dapat menghitung dan mengurangi stok secara otomatis ketika terjadi penjualan.
+- [ ] AC-1: [Admin dapat menambahkan dan mengubah data bahan baku.]
+- [ ] AC-2: [Admin dapat menentukan bahan dan jumlah yang digunakan untuk setiap menu.]
+- [ ] AC-3: [Ketika transaksi berhasil, sistem mengurangi stok berdasarkan komposisi bahan menu yang terjual.]
+### US-03
+> Sebagai [pemilik], saya ingin melihat laporan pendapatan harian, sehingga saya dapat mengetahui hasil penjualan kedai pada setiap hari.
+- [ ] AC-1: [Sistem menampilkan total transaksi pada bulan yang dipilih.]
+- [ ] AC-2: [Sistem menampilkan total pendapatan berdasarkan transaksi yang tercatat.]
+- [ ] AC-3: [Laporan hanya dapat diakses oleh pengguna dengan hak akses pemilik.]
+## 5. Use Case Naratif
+- **Nama Use Case:** Mencatat penjualan dan memperbarui stok bahan baku secara otomatis.
+- **Aktor utama:** Kasir
+- **Prekondisi:**
+    * Kasir sudah login.
+    * Data menu tersedia.
+    * Data komposisi bahan setiap menu sudah tersedia.
+    * Stok bahan baku tercatat dalam sistem.
+- *Alur utama:**
+    1. Kasir membuka halaman transaksi.
+    2. Sistem menampilkan daftar menu.
+    3. Kasir memilih menu yang dipesan pelanggan.
+    4. Kasir memasukkan jumlah masing-masing menu.
+    5. Sistem menghitung total transaksi.
+    6. Kasir mengonfirmasi transaksi.
+    7. Sistem menyimpan transaksi.
+    8. Sistem menghitung kebutuhan bahan berdasarkan menu dan jumlah yang terjual.
+    9. Sistem mengurangi stok bahan baku secara otomatis.
+    10. Sistem menampilkan bahwa transaksi berhasil disimpan.
+- **Pascakondisi:** Data transaksi tersimpan dan stok bahan baku telah diperbarui sesuai bahan yang digunakan.
